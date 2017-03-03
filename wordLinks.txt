@@ -1,0 +1,54 @@
+Copy All Links Macro (Word)
+
+Alt + F11
+
+Sub HyperlinksExtract()
+'Updateby20140214
+    Dim oLink As Hyperlink
+    Dim docCurrent As Document 'current document
+    Dim docNew As Document 'new document
+    Dim rngStory As StoryRanges
+    Set docCurrent = ActiveDocument
+    Set docNew = Documents.Add
+    For Each oLink In docCurrent.Hyperlinks
+        oLink.Range.Copy
+        docNew.Activate
+        Selection.Paste
+        Selection.TypeParagraph
+    Next
+     
+    Set docNew = Nothing
+    Set docCurrent = Nothing
+End Sub
+
+
+
+Prints (External) Linked Word Documents
+
+Alt + F11
+
+
+Sub LinkPrint()
+Dim aLink As Hyperlink, docTemp As Document
+For Each aLink In ActiveDocument.Hyperlinks
+Set docTemp = Documents.Open(FileName:=aLink.Address, _
+ConfirmConversions:=False, Visible:=False)
+docTemp.PrintOut
+docTemp.Close wdDoNotSaveChanges
+Set docTemp = Nothing
+Next
+End Sub
+
+
+
+
+Open Selected Links Macro (for Word)
+
+Alt + F11
+
+Sub OpenSelectedLinks()
+Dim oLink As Hyperlink
+For Each oLink In Selection.Hyperlinks
+oLink.Follow
+Next
+End Sub
