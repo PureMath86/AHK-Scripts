@@ -1,0 +1,410 @@
+#Persistent
+#SingleInstance Force
+#NoEnv
+Menu, tray, icon, %A_WinDir%\system32\SHELL32.dll, 14
+;***********************tray items********************************.
+Menu, Tray, NoStandard ;removes default options
+Menu, Tray, Add, Helpful Links, Helpful_Links
+Menu, Tray, Add, About this program, About
+Menu, Tray, Add, 
+Menu, Tray, Add, Reload
+Menu, Tray, Add, Edit
+Menu, Tray, Add, Exit
+;****************************** 
+
+; Beginning of script's auto-execute section.
+; -~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- ;
+;
+;	MyMenu -->	PyMenu 	 -->	TaskMenu  -->  edaMenu   		-->	Get Data
+;																							  					-->	Sanitize Data
+;																							  					-->	Format Columns
+;																												-->	Quick Describe
+;																												-->	nanMenu					-->	Highlight
+;																																							-->	Replace
+;																			  -->	visMenu
+;																			  -->	strMenu
+;																			  -->	webMenu			--> Setup
+;																												--> Scrape
+;																								
+;
+;												 -->	PackMenu   --> tiMenu
+;																			  --> dtMenu
+;																			  --> selMenu
+;																			  --> reqMenu
+;																			  --> threadMenu
+;																			  --> subprocMenu
+;																			  --> excelMenu
+;																			  -->	osMenu				-->	Item1
+;																												-->	Item2
+;																			  --> pltMenu
+;																			  --> seaMenu
+;																			  --> spMenu
+;																			  --> npMenu
+;																			  --> pdMenu
+;																			  --> sklMenu
+;																			  --> bsMenu
+;					-->	SQLMenu	-->	liteMenu	  -->	
+;												-->	comMenu	  -->	
+;												-->	snipMenu	  -->	
+;
+Menu, MyMenu, Add, Item1, MenuHandler								
+								
+Menu, MyMenu, Add 								
+								
+			Menu, edaMenu, Add, Get Data, MenuHandler					
+			Menu, edaMenu, Add, Sanitize Data, MenuHandler					
+			Menu, edaMenu, Add, Format Columns, MenuHandler					
+			Menu, edaMenu, Add, Quick Describe, MenuHandler					
+								
+			Menu, edaMenu, Add					
+								
+				Menu, nanMenu, Add, Item1, MenuHandler				
+				Menu, nanMenu, Add, Item2, MenuHandler				
+								
+			Menu, edaMenu, Add, NaN / Missing Values, :nanMenu					
+								
+		Menu, TaskMenu, Add, EDA, :edaMenu						
+								
+		Menu, TaskMenu, Add						
+								
+			Menu, visMenu, Add, Story Telling, MenuHandler					
+			Menu, visMenu, Add, Colors, MenuHandler					
+								
+		Menu, TaskMenu, Add, Visualization, :visMenu						
+								
+		Menu, TaskMenu, Add						
+								
+			Menu, strMenu, Add, Convert, MenuHandler					
+			Menu, strMenu, Add, RegEx, MenuHandler					
+								
+		Menu, TaskMenu, Add, String Format, :strMenu						
+								
+		Menu, TaskMenu, Add						
+								
+			Menu, webMenu, Add, Setup, MenuHandler					
+			Menu, webMenu, Add, Scrape, MenuHandler					
+			Menu, webMenu, Add, Navigation, MenuHandler					
+			Menu, webMenu, Add, Crawlers, MenuHandler					
+								
+		Menu, TaskMenu, Add, Web Scrape, :webMenu						
+								
+	Menu, PyMenu, Add, Task, :TaskMenu							
+								
+	Menu, PyMenu, Add 							
+								
+			Menu, tiMenu, Add, Item1, MenuHandler					
+			Menu, tiMenu, Add, Item2, MenuHandler					
+								
+		Menu, PackMenu, Add, Time, :tiMenu						
+								
+		Menu, PackMenu, Add 						
+								
+			Menu, dtMenu, Add, Item1, MenuHandler					
+			Menu, dtMenu, Add, Item2, MenuHandler					
+								
+		Menu, PackMenu, Add, DateTime, :dtMenu						
+								
+		Menu, PackMenu, Add 						
+								
+			Menu, selMenu, Add, Item1, MenuHandler					
+			Menu, selMenu, Add, Item2, MenuHandler					
+								
+		Menu, PackMenu, Add, Selenium, :selMenu						
+								
+		Menu, PackMenu, Add 						
+								
+			Menu, reqMenu, Add, Item1, MenuHandler					
+			Menu, reqMenu, Add, Item2, MenuHandler					
+								
+		Menu, PackMenu, Add, Requests, :reqMenu						
+								
+		Menu, PackMenu, Add 						
+								
+			Menu, threadMenu, Add, Item1, MenuHandler					
+			Menu, threadMenu, Add, Item2, MenuHandler					
+								
+		Menu, PackMenu, Add, Threading, :threadMenu						
+								
+		Menu, PackMenu, Add 						
+								
+			Menu, subprocMenu, Add, Item1, MenuHandler					
+			Menu, subprocMenu, Add, Item2, MenuHandler					
+								
+		Menu, PackMenu, Add, SubProcess, :subprocMenu						
+								
+		Menu, PackMenu, Add 						
+								
+			Menu, excelMenu, Add, Item1, MenuHandler					
+			Menu, excelMenu, Add, Item2, MenuHandler					
+								
+		Menu, PackMenu, Add, OpenPyXl, :excelMenu						
+								
+		Menu, PackMenu, Add 						
+								
+			Menu, osMenu, Add, Item1, MenuHandler					
+			Menu, osMenu, Add, Item2, MenuHandler					
+								
+		Menu, PackMenu, Add, OS, :osMenu						
+								
+		Menu, PackMenu, Add 						
+								
+			Menu, seaMenu, Add, Item1, MenuHandler					
+			Menu, seaMenu, Add, Item2, MenuHandler					
+								
+		Menu, PackMenu, Add, SeaBorn, :seaMenu						
+								
+		Menu, PackMenu, Add 						
+								
+			Menu, pltMenu, Add, Item1, MenuHandler					
+			Menu, pltMenu, Add, Item2, MenuHandler					
+								
+		Menu, PackMenu, Add, MatPlotLib, :pltMenu						
+								
+		Menu, PackMenu, Add 						
+								
+			Menu, spMenu, Add, Item1, MenuHandler					
+			Menu, spMenu, Add, Item2, MenuHandler					
+								
+		Menu, PackMenu, Add, SciPy, :spMenu						
+								
+		Menu, PackMenu, Add 						
+								
+			Menu, npMenu, Add, Item1, MenuHandler					
+			Menu, npMenu, Add, Item2, MenuHandler					
+								
+		Menu, PackMenu, Add, NumPy, :npMenu						
+								
+		Menu, PackMenu, Add 						
+								
+			Menu, pdMenu, Add, Item1, MenuHandler					
+			Menu, pdMenu, Add, Item2, MenuHandler					
+								
+		Menu, PackMenu, Add, PanDas, :pdMenu						
+								
+		Menu, PackMenu, Add 						
+								
+			Menu, sklMenu, Add, import sklearn, MenuHandler					
+			Menu, sklMenu, Add, import KNN, KNN1
+			Menu, sklMenu, Add, initiate KNN, KNN2
+			Menu, sklMenu, Add, train KNN, KNN3
+			Menu, sklMenu, Add, predict KNN, KNN4			
+								
+		Menu, PackMenu, Add, SciKitLearn, :sklMenu						
+								
+		Menu, PackMenu, Add 						
+								
+			Menu, bsMenu, Add, Item1, MenuHandler					
+			Menu, bsMenu, Add, Item2, MenuHandler					
+								
+		Menu, PackMenu, Add, Beautiful Soup, :bsMenu						
+								
+	Menu, PyMenu, Add, Package, :PackMenu							
+								
+Menu, MyMenu, Add, Python, :PyMenu								
+								
+Menu, MyMenu, Add  								
+								
+Menu, MyMenu, Add, Item2, MenuHandler								
+								
+Menu, MyMenu, Add 								
+								
+		Menu, comMenu, Add, Alter Table, MenuHandler						
+		Menu, comMenu, Add, And, MenuHandler						
+		Menu, comMenu, Add, As, MenuHandler						
+		Menu, comMenu, Add, Avg, MenuHandler						
+		Menu, comMenu, Add, Between, MenuHandler						
+		Menu, comMenu, Add, Count, MenuHandler						
+		Menu, comMenu, Add, Create Table, MenuHandler						
+		Menu, comMenu, Add, Delete, MenuHandler						
+		Menu, comMenu, Add, Group By, MenuHandler						
+		Menu, comMenu, Add, Inner Join, MenuHandler						
+		Menu, comMenu, Add, Insert, MenuHandler						
+		Menu, comMenu, Add, Like, MenuHandler						
+		Menu, comMenu, Add, Limit, MenuHandler						
+		Menu, comMenu, Add, Max, MenuHandler						
+		Menu, comMenu, Add, Min, MenuHandler						
+		Menu, comMenu, Add, Or, MenuHandler						
+		Menu, comMenu, Add, Ordered By, MenuHandler						
+		Menu, comMenu, Add, Outer Join, MenuHandler						
+		Menu, comMenu, Add, Round, MenuHandler						
+		Menu, comMenu, Add, Select, MenuHandler						
+		Menu, comMenu, Add, Select Distinct, MenuHandler						
+		Menu, comMenu, Add, Sum, MenuHandler						
+		Menu, comMenu, Add, Update, MenuHandler						
+		Menu, comMenu, Add, Where, MenuHandler						
+								
+	Menu, SQLMenu, Add, COMMANDS, :comMenu							
+								
+	Menu, SQLMenu, Add							
+								
+		Menu, liteMenu, Add, Item1, MenuHandler						
+		Menu, liteMenu, Add, Item2, MenuHandler						
+								
+	Menu, SQLMenu, Add, SQLite, :liteMenu							
+								
+	Menu, SQLMenu, Add							
+								
+		Menu, snipMenu, Add, Item1, MenuHandler						
+		Menu, snipMenu, Add, Item2, MenuHandler						
+								
+	Menu, SQLMenu, Add, Snip / Clip, :snipMenu							
+								
+Menu, MyMenu, Add, SQL, :SQLMenu								
+								
+Menu, MyMenu, Add  								
+								
+Menu, MyMenu, Add, Item3, MenuHandler  								
+return  								
+; -~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~- ;
+; End of script's auto-execute section.
+  
+;******************************  
+^Lbutton::Menu, MyMenu, Show  ; i.e. Ctrl + Left-Click to display the menu.
+;~ Browser_Forward::Reload
+;****************************** 
+
+
+
+;****************************** 
+;***********Subroutines******************* 
+;****************************** 
+;*******Store Clipboard- ****************
+Store_Clipboard_Copy_Selected_Text:
+Store:=ClipboardAll  ;Store full version of Clipboard
+  clipboard :="" ; Empty the clipboard
+  Send, ^c  ;Depending on your OS and Admin level- you might want to check this
+  ClipWait, 1  
+return
+ 
+;***********Restore clipboard******************* 
+Paste_and_Restore_Stored_Clipboard:  ;~ MsgBox % clipboard
+Sleep, 50
+Send, ^v ;Depending on your OS and Admin level- you might want to check this
+Sleep, 50
+Clipboard:=Store  ;Restore clipboard to original contents
+return
+
+;****************************** 
+Helpful_Links:
+Gui, Helpful:Destroy
+;~ Gui, Help:Add, Text,x10 y10, This program allows computers that share a mutual folder to share the clipboard.
+;~ Gui, Help:Add, Text,x10 y+15, After launching the script on both computers FROM THE SAME DIRECTORY, Copy/paste as you would normally however use the Windows Key INSTEAD of the Control Key.
+;~ Gui, Help:Add, Text,x10 y+15, To Copy hold down the windows key and press C (Alternatively you can press Alt and F1)
+;~ Gui, Help:Add, Text,x10 y+15, To Paste hold down the windows key and press V (Alternatively you can press Alt and F2)
+Gui, Helpful:Font,CBlue Underline
+Gui, Helpful:Add,Text,y+5 GWebsite_Jethrow, Jethrow Tutorial
+Gui, Helpful:Add,Text,y+10 GWebsite_Mickers, Mickers Tutorial
+;****************************** 
+Gui, Helpful:Font,Bold cBlack Norm 
+Gui, Helpful:Add,Text,y+20, Other Resources
+Gui, Helpful:Font,CBlue Underline
+Gui, Helpful:Add,Text,y+10 GWebsite_W3Schools, W3 Schools
+Gui, Helpful:Add,Text,y+10 GWebsite_DottorO, DottorO
+Gui, Helpful:Add,Text,y+10 GWebsite_iWebBrowswer2, iWeb2 Browser
+Gui, Helpful:Add,Text,y+10 GWebsite_YouTube, YouTube Demo
+Gui, Helpful:Add,Text,y+10 GWebsite_AHK_Tutorial, AHK tutorial
+ 
+ 
+hCurs:=DllCall("LoadCursor","UInt",NULL,"Int",32649,"UInt") ;IDC_HAND
+onMessage(0x200, "MsgHandler")
+ 
+Gui, Helpful:Show,w150 , Helpful links
+ 
+;~ run 
+return
+ 
+;***********About me******************* 
+About:
+Gui,About:Destroy
+Gui,About:Font,Bold
+Gui,About:Add,Text,x10 y10,Coding Tool-Tip  v0.1
+Gui,About:Font,Norm
+Gui,About:Add,Text,x10 y30,To activate menu, Hold down a control key and click the left mouse button
+ 
+Gui,About:Font
+Gui,About:Font,CBlue Underline
+Gui,About:Add,Text,y+10 GWebsite_LinkedIN, Bryan Arnold on LinkedIN
+hCurs:=DllCall("LoadCursor","UInt",NULL,"Int",32649,"UInt") ;IDC_HAND
+onMessage(0x200, "MsgHandler")
+ Gui,About:Font
+ Gui,About:Show,, About
+return
+ 
+Website_Jethrow:
+Run,http://www.autohotkey.com/board/topic/47052-basic-webpage-controls-with-javascript-com-tutorial
+  gosub GuiClose
+Return
+ 
+Website_Mickers:
+Run,http://www.autohotkey.com/board/topic/64563-basic-ahk-v11-com-tutorial-for-webpages/
+  gosub GuiClose
+Return
+ 
+Website_W3Schools:
+Run, http://www.w3schools.com/jsref/dom_obj_document.asp
+  gosub GuiClose
+Return
+ 
+Website_DottorO:
+Run, http://help.dottoro.com/ljhrmrfb.php
+  gosub GuiClose
+Return
+ 
+Website_LinkedIN:
+Run,http://www.linkedin.com/in/
+Return
+ 
+Website_iWebBrowswer2:
+Run, http://www.autohotkey.com/board/topic/84258-iwb2-learner-iwebbrowser2/
+Return
+ 
+Website_YouTube:
+Run, https://youtu.be/UfqumFBUrwI
+Return
+ 
+Website_AHK_Tutorial:
+Run, http://ahkscript.org/boards/viewtopic.php?f=7&t=7822
+return
+ 
+Exit:
+ExitApp
+Return
+ 
+Reload:
+Reload
+Return
+ 
+Edit:
+Edit
+Return
+ 
+GuiClose:
+  Gui,About:Destroy
+  OnMessage(0x200,"")
+  DllCall("DestroyCursor","Uint",hCur)
+Return
+
+; MenuHandler Example
+MenuHandler:
+MsgBox You selected %A_ThisMenuItem% from the menu %A_ThisMenu%.
+return
+
+; import KNN
+KNN1:
+MsgBox #import the package `nfrom sklearn.neighbors import KNeighborsClassifier
+return
+
+; initiate KNN
+KNN2:
+MsgBox # initiate the model `nknn = KNeighborsClassifier(n_neighbors=1) `n# model parameters `nprint(knn)
+return
+
+; train KNN
+KNN3:
+MsgBox # model training `nknn.fit(X,y)
+return
+
+; predict KNN
+KNN4:
+MsgBox # predict the response for new observations `nknn.predict(X_new)
+return
